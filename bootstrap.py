@@ -1,4 +1,5 @@
 import numpy as np
+import collections
 try:
     from scipy.stats import scoreatpercentile
 except:
@@ -7,23 +8,32 @@ except:
 
 def _confidence_interval_1d(A, confidenceLevel=.05, metric=np.mean, numResamples=10000, interpolate=True):
     """Calculates bootstrap confidence interval along one dimensional array"""
+    
+    if not isinstance(confidenceLevel, collections.Iterable):
+        confidenceLevel = np.array([confidenceLevel])
+
     N = len(A)
     resampleInds = np.random.randint(0, N, (numResamples,N))
     metricOfResampled = metric(A[resampleInds], axis=-1)
+
+    confidenceInterval = np.zeros(2*len(confidenceLevel),dtype='float')
+    
     if interpolate:
-        lower = scoreatpercentile(metricOfResampled, confidenceLevel*100/2.0)
-        upper = scoreatpercentile(metricOfResampled, 100-confidenceLevel*100/2.0)
+        for thisConfidenceLevelInd, thisConfidenceLevel in enumerate(confidenceLevel):
+            confidenceInterval[2*thisConfidenceLevelInd] = scoreatpercentile(metricOfResampled, thisConfidenceLevel*100/2.0)
+            confidenceInterval[2*thisConfidenceLevelInd+1] = scoreatpercentile(metricOfResampled, 100-thisConfidenceLevel*100/2.0)
     else:
         sortedMetricOfResampled = np.sort(metricOfResampled)
-        lower = sortedMetricOfResampled[int(round(confidenceLevel*numResamples/2.0))]
-        upper = sortedMetricOfResampled[int(round(numResamples - confidenceLevel*numResamples/2.0))]
-    return lower, upper
+        for thisConfidenceLevelInd, thisConfidenceLevel in enumerate(confidenceLevel):
+            confidenceInterval[2*thisConfidenceLevelInd] = sortedMetricOfResampled[int(round(thisConfidenceLevel*numResamples/2.0))]
+            confidenceInterval[2*thisConfidenceLevelInd+1] = sortedMetricOfResampled[int(round(numResamples - thisConfidenceLevel*numResamples/2.0))]
+    return confidenceInterval
     
 def _ma_confidence_interval_1d(A, confidenceLevel=.05, metric=np.mean, numResamples=10000, interpolate=True):
     A = np.ma.masked_invalid(A, copy=True)
     A = A.compressed()
-    lower, upper = _confidence_interval_1d(A, confidenceLevel, metric, numResamples, interpolate)
-    return lower, upper
+    confidenceInterval = _confidence_interval_1d(A, confidenceLevel, metric, numResamples, interpolate)
+    return confidenceInterval
 
 def confidence_interval(A, axis=None, confidenceLevel=.05, metric=np.mean, numResamples=10000, interpolate=True):
     """Calculates bootstrap confidence interval along the given axis"""
