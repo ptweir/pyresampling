@@ -1,0 +1,6 @@
+{
+  "name": "Pyresampling",
+  "tagline": "Some scripts for resampling statistics in Python",
+  "body": "### Statistics based on resampling in Python: bootstrapping and permutation tests\r\n\r\nResampling techniques in statistics are appealing because they rely on few assumptions about the underlying distribution of one's data. Unfortunately, Python does not seem to have a simple library implementing the more common approaches.\r\n\r\n### Authors and Contributors\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
