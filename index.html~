@@ -17,7 +17,7 @@
     <div id="header_wrap" class="outer">
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/ptweir/pyresampling">View on GitHub</a>
-          <a id="breadcrumbs_banner" href="http://ptweir.github.io/">ptweir home</a><a id="breadcrumbs_child" href="http://ptweir.github.io/pyresampling/">pyresampling</a>
+
           <h1 id="project_title">Pyresampling</h1>
           <h2 id="project_tagline">Some scripts for resampling statistics in Python</h2>
 

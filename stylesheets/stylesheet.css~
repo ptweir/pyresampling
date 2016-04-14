@@ -286,36 +286,6 @@ Full-Width Styles
   border-bottom-right-radius: 2px;
 }
 
-#breadcrumbs_banner {
-  display: block;
-  position: absolute;
-  top:0;
-  left: 10px;
-  z-index: 10;
-  padding: 4px 15px 4px 10px;
-  color: #fff;
-  background: #555555;
-  font-weight: 700;
-  box-shadow: 0 0 10px rgba(0,0,0,.5);
-  border-bottom-right-radius: 50px;
-  border-top-right-radius: 50px;
-}
-
-#breadcrumbs_child {
-  display: block;
-  position: absolute;
-  top:0;
-  left: 100px;
-  z-index: 9;
-  padding: 4px 15px 4px 40px;
-  color: #fff;
-  background: #555555;
-  font-weight: 700;
-  box-shadow: 0 0 10px rgba(0,0,0,.5);
-  border-bottom-right-radius: 50px;
-  border-top-right-radius: 50px;
-}
-
 #header_wrap {
   background: #212121;
   background: -moz-linear-gradient(top, #373737, #212121);
