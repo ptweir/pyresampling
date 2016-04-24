@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-    <title>Pyresampling</title>
+    <title>PyResampling</title>
   </head>
 
   <body>
@@ -17,8 +17,8 @@
     <div id="header_wrap" class="outer">
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/ptweir/pyresampling">View on GitHub</a>
-          <a id="breadcrumbs_banner" href="http://ptweir.github.io/">ptweir home</a><a id="breadcrumbs_child" href="http://ptweir.github.io/pyresampling/">pyresampling</a>
-          <h1 id="project_title">Pyresampling</h1>
+          <a id="breadcrumbs_banner" href="http://ptweir.github.io/">ptweir home</a><a id="breadcrumbs_child" href="http://ptweir.github.io/pyresampling/">PyResampling</a>
+          <h1 id="project_title">PyResampling</h1>
           <h2 id="project_tagline">Some scripts for resampling statistics in Python</h2>
 
             <section id="downloads">
@@ -34,8 +34,8 @@
         <h3>
 <a id="statistics-based-on-resampling-in-python-bootstrapping-and-permutation-tests" class="anchor" href="#statistics-based-on-resampling-in-python-bootstrapping-and-permutation-tests" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Statistics based on resampling in Python: bootstrapping and permutation tests</h3>
 
-<p>Resampling techniques in statistics are appealing because they rely on few assumptions about the underlying distribution of one's data. Unfortunately, Python does not seem to have a simple library implementing the more common approaches. I set out to write my own routines for a few of these, based mostly on wikipedia's <a href="http://en.wikipedia.org/wiki/Bootstrapping_%28statistics%29">article</a>. My idea was that it would be useful to be able to construct a confidence interval of any metric (e.g. np.mean or np.std) of the values in an array along any axis, ignoring NaNs and masked values. The method should also accept as parameters the alpha of the confidence interval, and the number of resampling iterations to compute. This project is what I came up with.</p>
-<p>After completing most of this, I found a useful site describing the basics of computing bootstrap confidence intervals (along with other things) <a href="http://people.duke.edu/~ccc14/pcfb/analysis.html">here</a>. I edited my code to be more directly comparable to the snippets there. I have also implemented a similar permutation test to compare any 'metric' (again, e. g. np.mean) of two groups. These methods are in the 'permutation.py' file. This time I intentionally borrowed heavily from <a href="http://people.duke.edu/~ccc14/pcfb/analysis.html">Cliburn Chan</a>. (Note, however, I believe there is an error on that page in the 'permutation_resampling' method that assumes one wants to compute the mean of the groups.)</p>
+<p>Resampling techniques in statistics are appealing because they rely on few assumptions about the underlying distribution of one's data. Wikipedia has an excellent <a href="http://en.wikipedia.org/wiki/Bootstrapping_%28statistics%29">article</a> on these approaches. I have implemented a few functions for use with NumPy arrays in this project. The methods in <a href="https://raw.githubusercontent.com/ptweir/pyresampling/master/bootstrap.py">bootstrap.py</a> enable one to construct a confidence interval of any metric (e.g. np.mean or np.std) of the values in an array along any axis, ignoring NaNs and masked values. One needs to specify the desired confidence level ("alpha") of the interval, and the number of resampling iterations to compute.</p>
+<p>After completing most of the bootstrap.py script, I found a useful site describing the basics of computing bootstrap confidence intervals (along with other things) <a href="http://people.duke.edu/~ccc14/pcfb/analysis.html">here</a>. I edited my code to be more directly comparable to the snippets there. I have also implemented a similar permutation test to compare any 'metric' (again, e. g. np.mean) of two groups. These methods are in the <a href="https://raw.githubusercontent.com/ptweir/pyresampling/master/permutation.py">permutation.py</a> file. This time I intentionally borrowed heavily from <a href="http://people.duke.edu/~ccc14/pcfb/analysis.html">Cliburn Chan</a>. (Note, however, I believe there is an error on that page in the 'permutation_resampling' method that assumes one wants to compute the mean of the groups.)</p>
 
 
 <h3>
