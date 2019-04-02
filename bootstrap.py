@@ -66,7 +66,7 @@ def confidence_interval(A, axis=None, alpha=.05, metric=np.mean, numResamples=10
     """
     
     if interpolate is True and scoreatpercentile is False:
-        print "need scipy to interpolate between values"
+        print("need scipy to interpolate between values")
         interpolate = False
         
     A = A.copy()
